@@ -5,6 +5,11 @@ export default {
       words: "",
     };
   },
+  computed: {
+    vocabs() {
+      return this.words.split(" ").filter((word) => word != "");
+    },
+  },
 };
 </script>
 
@@ -15,10 +20,11 @@ export default {
     </div>
     <ul class="flex flex-wrap gap-12 mt-16">
       <li
-        v-for="word in ['Apple', 'Orange', 'Mango', 'Grapes', 'Banana']"
+        v-for="(vocab, index) in vocabs"
+        :key="index"
         class="inline-block px-12 py-8 rounded-xl shadow-lg bg-blue-600 text-white text-5xl"
       >
-        {{ word }}
+        {{ vocab }}
       </li>
     </ul>
   </div>
